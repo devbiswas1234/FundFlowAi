@@ -5,7 +5,7 @@ import {
 } from 'recharts';
 import { Layers, PieChart as PieIcon, Activity } from 'lucide-react';
 import './Pages.css';
-const API_BASE_URL = process.env.REACT_APP_API_URL || `${API_BASE_URL}`;
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
 
 
 const COLORS = ['#2ea043', '#d29922', '#f85149'];

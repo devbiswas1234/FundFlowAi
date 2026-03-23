@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Download, FileText, CheckCircle } from 'lucide-react';
 import './Pages.css';
-const API_BASE_URL = process.env.REACT_APP_API_URL || `${API_BASE_URL}`;
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
 
 
 function Reports() {
