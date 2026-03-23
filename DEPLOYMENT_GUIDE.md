@@ -16,16 +16,21 @@ Since the project relies on Neo4j for the investigation graph, you need a free c
 3. It will generate a text file containing your `NEO4J_URI`, `NEO4J_USERNAME` (usually `neo4j`), and `NEO4J_PASSWORD`. **Save this file!**
 
 ## 3. Deploy the Backend API (Render)
-Render offers a free tier for hosting web services like your FastAPI backend.
+Render requires a credit card if you use the "Blueprint" feature. To avoid this and deploy completely for free, create a **Web Service** manually:
 1. Go to [Render.com](https://render.com/) and sign up with GitHub.
-2. Go to your Dashboard and click **New+** > **Blueprint**.
+2. Go to your Dashboard and click **New+** > **Web Service**.
 3. Connect your GitHub repository (`fundflowAi`).
-4. Render will read the `render.yaml` file automatically to configure the deployment.
-5. In the Render Dashboard for your new web service, go to the **Environment** tab.
-6. Add the following environment variables using the credentials from step 2:
+4. Fill in the details:
+   - **Name**: `fundflowai-backend` (or similar)
+   - **Language**: `Python`
+   - **Build Command**: `cd backend && pip install -r requirements.txt`
+   - **Start Command**: `cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+   - **Instance Type**: Select the **Free** instance type.
+5. Scroll down to **Advanced** > **Environment Variables** and add:
    - `NEO4J_URI`: e.g., `neo4j+s://xxxxxx.databases.neo4j.io`
    - `NEO4J_USERNAME`: `neo4j`
-   - `NEO4J_PASSWORD`: Your password
+   - `NEO4J_PASSWORD`: Your AuraDB password
+6. Click **Create Web Service**.
 7. Once Render finishes deploying, copy the **Render URL** (e.g., `https://fundflowai-backend.onrender.com`).
 
 *(Note: Free instances on Render spin down after 15 minutes of inactivity, so the first request might take 50 seconds to wake it up).*
